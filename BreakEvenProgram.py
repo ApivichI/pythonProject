@@ -2,14 +2,14 @@ import tkinter as tk
 
 def calculate_break_even():
     try:
-        fixed_costs = float(fixed_costs_entry.get())
-        variable_costs = float(variable_costs_entry.get())
-        selling_price = float(selling_price_entry.get())
+        fixed_costs = float(fixed_costs_entry.get())#200
+        variable_costs = float(variable_costs_entry.get())#10
+        selling_price = float(selling_price_entry.get())#20
 
         if variable_costs >= selling_price:
             result_label.config(text="No Break-Even Point")
         else:
-            break_even_point = fixed_costs / (selling_price - variable_costs)
+            break_even_point = fixed_costs / (selling_price - variable_costs)#200/(20-10)= 20
             result_label.config(text=f"Break-Even Point: {break_even_point:.2f} units")
 
     except ValueError:
