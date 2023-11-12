@@ -55,8 +55,7 @@ def plot_break_even(fixed_costs, variable_costs, selling_price, break_even_point
     canvas.get_tk_widget().pack()
 
 def clear_input():
-    global canvas 
-     
+    global canvas  
     fixed_costs_entry.delete(0, "end")
     variable_costs_entry.delete(0, "end")
     selling_price_entry.delete(0, "end")
