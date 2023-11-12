@@ -16,6 +16,9 @@ def calculate_break_even():
             break_even_point = fixed_costs / (selling_price - variable_costs)
             result_label.config(text=f"Break-Even Point: {break_even_point:.2f} units")
 
+            break_even_value = break_even_point * selling_price
+            result_amount_label.config(text=f"Break-Even Value: {break_even_value:.2f}")
+
             plot_break_even(fixed_costs, variable_costs, selling_price, break_even_point)
     except ValueError:
         clear_input()
@@ -52,11 +55,13 @@ def plot_break_even(fixed_costs, variable_costs, selling_price, break_even_point
     canvas.get_tk_widget().pack()
 
 def clear_input():
-    global canvas  
-    result_label.config(text="")
+    global canvas 
+     
     fixed_costs_entry.delete(0, "end")
     variable_costs_entry.delete(0, "end")
     selling_price_entry.delete(0, "end")
+    result_label.config(text="")
+    result_amount_label.config(text="")
 
     if canvas is not None:
         canvas.get_tk_widget().pack_forget()  
@@ -90,5 +95,8 @@ cleargraph_button.pack(anchor='center')
 
 result_label = tk.Label(text="")
 result_label.pack()
+
+result_amount_label = tk.Label(text="")
+result_amount_label.pack()
 
 app.mainloop()
