@@ -12,6 +12,10 @@ def calculate_break_even():
 
         if variable_costs >= selling_price:
             result_label.config(text="No Break-Even Point")
+
+        elif fixed_costs < 0 or variable_costs < 0 or selling_price < 0:
+            result_label.config(text="Please input positive integer")
+            
         else:
             break_even_point = fixed_costs / (selling_price - variable_costs)
             result_label.config(text=f"Break-Even Point: {break_even_point:.2f} units")
@@ -23,6 +27,7 @@ def calculate_break_even():
     except ValueError:
         clear_input()
         result_label.config(text="Please enter valid numbers")
+
 
 def plot_break_even(fixed_costs, variable_costs, selling_price, break_even_point):
     global canvas          
@@ -47,7 +52,7 @@ def plot_break_even(fixed_costs, variable_costs, selling_price, break_even_point
     plt.legend()
     
     if canvas is not None:
-        canvas.get_tk_widget().pack_forget() 
+        canvas.get_tk_widget().pack_forget()
 
     app.geometry('800x700')
 
